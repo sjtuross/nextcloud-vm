@@ -11,7 +11,7 @@
 true
 SCRIPT_NAME="Nextcloud Update Script"
 # shellcheck source=lib.sh
-source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source <(curl -sL https://raw.githubusercontent.com/sjtuross/nextcloud-vm/master/lib.sh)
 
 # Get all needed variables from the library
 ncdb
@@ -705,7 +705,7 @@ then
 elif [ -f /tmp/nextmajor.version ]
 then
     NCBAD=$(cat /tmp/nextmajor.version)
-    NCVERSION=$(curl -s -m 900 $NCREPO/ | sed --silent 's/.*href="nextcloud-\([^"]\+\).zip.asc".*/\1/p' | sort --version-sort | grep $NCNEXT | tail -1)
+    NCVERSION="23.0.8"
     if [ -z "$NCVERSION" ]
     then
         msg_box "The version that you are trying to upgrade to doesn't exist."
